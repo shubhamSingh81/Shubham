@@ -74,10 +74,17 @@ export const User = () => {
     <div className='ag-theme-alpine'
       style={{
         height: "360px",
+<<<<<<< HEAD
         width: "1295px",
         textAlign: "center",
         alignItems: "center",
         overflow: "none"
+=======
+        width: "1295px", 
+        textAlign:"center",
+        alignItems:"center",
+        overflow:"none"
+>>>>>>> 6e282287caa4efe06b44f69d1dbf3e357f2c1417
       }}
     >
 
@@ -90,6 +97,7 @@ export const User = () => {
         <i className='fa fa-mobile text-warning' /><h1>Click Me TO Go to About Page</h1><span className='text-warning'>
         </span>
       </Link>
+<<<<<<< HEAD
       <Grid align="right">
         <Button variant="contained" color="primary" onClick={handleClickOpen}>Add New Record</Button>
       </Grid>  {""}
@@ -100,6 +108,19 @@ export const User = () => {
         defaultColDef={defaultColDefinition}
         pagination={true}
         paginationPageSize={5} />
+=======
+
+
+
+
+      <nav className="navbar navbar-light bg-light">
+        <form className="form-inline">
+          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={() => setSearchKey(e.target.value)} /> {""}
+          <button className="btn btn-outline-success my-2 my-sm-0" onClick={handleSearch}>Search</button>
+        </form>
+      </nav>
+      <AgGridReact rowData={state} columnDefs={columns} defaultColDef={defaultColDefinition} pagination={true} paginationPageSize={5} />
+>>>>>>> 6e282287caa4efe06b44f69d1dbf3e357f2c1417
     </div>
   )
 }
