@@ -1,7 +1,8 @@
 export const Home = () => {
   return (
     <div>
-      Lorem ipsum, dolor sitm, ipsam odio sint mollitia ut ione unde placeat, quae voluptate?
+      Home Page 
+      <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti earum veritatis natus qui necessitatibus laudantium nisi ut sit illo esse?</h3>
     </div>
     )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { AgGridReact } from 'ag-grid-react'
+import { Link } from 'react-router-dom';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css'
 import { useState } from 'react';
@@ -56,6 +57,12 @@ export const User = () => {
         width: "995px"
       }}
     >
+
+<Link to={'/about'} className="navbar-brand">
+                        <i className='fa fa-mobile text-warning' /><h1>Click Me TO Go to About Page</h1><span className='text-warning'>  
+                        </span>
+                    </Link>
+
       <nav className="navbar navbar-light bg-light">
         <form className="form-inline">
           <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  onChange={()=> setSearchKey(e.target.value)}/> {""}

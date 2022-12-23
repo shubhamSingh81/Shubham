@@ -1,7 +1,7 @@
 export const About = () => {
   return (
     <div>
-      Lorem ipsum, dolor sitm, ipsam odio sint mollitia ut ione unde placeat, quae voluptate?
+     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia hic doloribus, corrupti necessitatibus atque enim consequatur numquam provident optio fugiat, unde voluptas rem velit rerum placeat nihil labore. Soluta animi sed vel minus eveniet, a sapiente vitae eum enim corporis iusto ullam aperiam ipsa at. Nemo illo atque fugit provident dolorum? Neque, incidunt harum. Facere cumque accusamus velit, eum quae alias, sint consequuntur natus nulla iure odio porro. Perferendis deleniti aliquam quisquam facere nam quibusdam excepturi ea reprehenderit laborum autem alias aspernatur, repellendus deserunt nobis voluptatem molestiae voluptate fuga officiis, quae molestias quo. Id vero dignissimos inventore aliquid nulla numquam distinctio maiores provident. Velit, consequuntur exercitationem recusandae atque dolores aliquid autem dignissimos magni in, earum quibusdam quisquam inventore neque rem voluptatum dolorum iure possimus beatae totam doloremque praesentium sequi labore eveniet. Odit ex sit exercitationem quasi. Iure reprehenderit eum voluptatum optio quas animi enim praesentium quos eos quibusdam repudiandae itaque consequuntur neque eaque quae, accusamus repellat inventore tempora atque! Fugit corrupti sit quibusdam deserunt, quae velit quo, cumque cupiditate unde est placeat. Tempora, laudantium sint repellendus aliquid voluptates, unde quam qui officia natus quos quaerat laborum pariatur. Esse optio et odio dicta odit dolores, possimus officiis nostrum, praesentium alias ratione.
     </div>
     )
 }
