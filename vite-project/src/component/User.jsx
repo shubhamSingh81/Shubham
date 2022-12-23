@@ -6,7 +6,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css'
 import { useState } from 'react';
 
 export const User = () => {
-  
+
   const data = [
     { firstName: "Shubham", lastName: "singh", email: "shubham.singh@gmail.com", phoneNumber: "987654321", address: "gujrat" },
     { firstName: "Saurabh", lastName: "Tiwari", email: "Saurabh.singh@gmail.com", phoneNumber: "987654329", address: "Vapi" },
@@ -45,8 +45,8 @@ export const User = () => {
     editable: true, filter: true
   }
 
-  const handleSearch = () =>{
-    const filteredData = data.filter( (value)=> value.email= data.email); 
+  const handleSearch = () => {
+    const filteredData = data.filter((value) => value.email = data.email);
     setState(filteredData)
   }
 
@@ -57,16 +57,24 @@ export const User = () => {
         width: "995px"
       }}
     >
+      <h1>User Page</h1>
+      <Link to={'/'} className="navbar-brand">
+        <i className='fa fa-mobile text-warning' /><h1>Click Me TO Go to Home Page</h1><span className='text-warning'>
+        </span>
+      </Link>
 
-<Link to={'/about'} className="navbar-brand">
-                        <i className='fa fa-mobile text-warning' /><h1>Click Me TO Go to About Page</h1><span className='text-warning'>  
-                        </span>
-                    </Link>
+      <Link to={'/about'} className="navbar-brand">
+        <i className='fa fa-mobile text-warning' /><h1>Click Me TO Go to About Page</h1><span className='text-warning'>
+        </span>
+      </Link>
+
+
+
 
       <nav className="navbar navbar-light bg-light">
         <form className="form-inline">
-          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  onChange={()=> setSearchKey(e.target.value)}/> {""}
-          <button className="btn btn-outline-success my-2 my-sm-0"  onClick={handleSearch}>Search</button>
+          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={() => setSearchKey(e.target.value)} /> {""}
+          <button className="btn btn-outline-success my-2 my-sm-0" onClick={handleSearch}>Search</button>
         </form>
       </nav>
       <AgGridReact rowData={state} columnDefs={columns} defaultColDef={defaultColDefinition} />
