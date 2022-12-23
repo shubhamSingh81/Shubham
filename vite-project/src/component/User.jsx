@@ -3,24 +3,50 @@ import { AgGridReact } from 'ag-grid-react'
 import { Link } from 'react-router-dom';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Grid, Button } from '@material-ui/core'
+import FormDialog from './Dialog';
+const initalValue = {firstName: "", lastName: "", email: "", phoneNumber: "", address: "" }
 
 export const User = () => {
+  const [tableData, setTableData] = useState(null);
+  const [open, setOpen] = React.useState(false);
+  const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", phoneNumber: "", address: "" })
 
-  const data = [
-    { firstName: "Shubham", lastName: "singh", email: "shubham.singh@gmail.com", phoneNumber: "987654321", address: "gujrat" },
-    { firstName: "Saurabh", lastName: "Tiwari", email: "Saurabh.singh@gmail.com", phoneNumber: "987654329", address: "Vapi" },
-    { firstName: "Satyam", lastName: "Sahu", email: "Satyam.singh@gmail.com", phoneNumber: "987654320", address: "Surat" },
-    { firstName: "Shivam", lastName: "Sombi", email: "Shivam.singh@gmail.com", phoneNumber: "987654392", address: "Valsad" },
-    { firstName: "Somil", lastName: "singh", email: "Somil.singh@gmail.com", phoneNumber: "987654371", address: "gujrat" },
-    { firstName: "Shyam", lastName: "singh", email: "Shyam.singh@gmail.com", phoneNumber: "987654334", address: "Daman" },
-    { firstName: "Shubham", lastName: "singh", email: "shubham@gmail.com", phoneNumber: "987654365", address: "deo" },
-    { firstName: "Sahu", lastName: "singh", email: "Sahu.singh@gmail.com", phoneNumber: "9876543433", address: "Neomar" },
-    { firstName: "Shivani", lastName: "singh", email: "Shivani@gmail.com", phoneNumber: "987654345", address: "MENT" },
-  ]
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-  const [state, setState] = useState(data);
-  const [searchKey, setSearchKey] = useState('');
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const onChange = (e) => {
+    const { value, id } = e.target
+    setFormData({ ...formData, [id]: value })
+  }
+
+  const url = 'http://localhost:4000/users'
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
+  const getUser = () => {
+    fetch(url).then(resp => resp.json()).then(resp => setTableData(resp))
+  }
+
+  const handleFormSubmit = () => {
+    fetch(url, {
+      method: "POST", body: JSON.stringify(formData), headers: {
+        'content-type': "application/json"
+      }
+    }).then((resp) => resp.json()).then((resp) => {
+      handleClose()
+      getUser()
+      setFormData(initalValue)
+    })
+  }
 
   const columns = [
     {
@@ -30,7 +56,7 @@ export const User = () => {
       headerName: "LastName", field: "lastName"
     },
     {
-      headerName: "Email", field: "email" , floatingFilter: true
+      headerName: "Email", field: "email", floatingFilter: true
     },
     {
       headerName: "PhoneNumber", field: "phoneNumber"
@@ -38,49 +64,42 @@ export const User = () => {
     {
       headerName: "Address", field: "address"
     },
-
   ]
 
   const defaultColDefinition = {
     editable: true, filter: true
   }
 
-  const handleSearch = () => {
-    const filteredData = data.filter((value) => value.email = data.email);
-    setState(filteredData)
-  }
-
   return (
     <div className='ag-theme-alpine'
       style={{
-        height: "500px",
-        width: "1395px", 
-        textAlign:"center",
-        alignItems:"center",
-        overflow:"none"
+        height: "360px",
+        width: "1295px",
+        textAlign: "center",
+        alignItems: "center",
+        overflow: "none"
       }}
     >
+
       <h1>User Page</h1>
       <Link to={'/'} className="navbar-brand">
         <i className='fa fa-mobile text-warning' /><h1>Click Me TO Go to Home Page</h1><span className='text-warning'>
         </span>
       </Link>
-
       <Link to={'/about'} className="navbar-brand">
         <i className='fa fa-mobile text-warning' /><h1>Click Me TO Go to About Page</h1><span className='text-warning'>
         </span>
       </Link>
-
-
-
-
-      <nav className="navbar navbar-light bg-light">
-        <form className="form-inline">
-          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={() => setSearchKey(e.target.value)} /> {""}
-          <button className="btn btn-outline-success my-2 my-sm-0" onClick={handleSearch}>Search</button>
-        </form>
-      </nav>
-      <AgGridReact rowData={state} columnDefs={columns} defaultColDef={defaultColDefinition} />
+      <Grid align="right">
+        <Button variant="contained" color="primary" onClick={handleClickOpen}>Add New Record</Button>
+      </Grid>  {""}
+      <FormDialog open={open} handleClose={handleClose} data={formData} onChange={onChange} handleFormSubmit={handleFormSubmit} />
+      <AgGridReact
+        rowData={tableData}
+        columnDefs={columns}
+        defaultColDef={defaultColDefinition}
+        pagination={true}
+        paginationPageSize={5} />
     </div>
   )
 }

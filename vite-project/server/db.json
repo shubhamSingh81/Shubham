@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Sahu",
+      "lastName": "singh",
+      "email": "Sahu.singh@gmail.com",
+      "phoneNumber": "9876543433",
+      "address": "Neomar"
+    }
+  ]
+}
