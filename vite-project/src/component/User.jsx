@@ -53,8 +53,8 @@ export const User = () => {
   return (
     <div className='ag-theme-alpine'
       style={{
-        height: "500px",
-        width: "1395px", 
+        height: "360px",
+        width: "1295px", 
         textAlign:"center",
         alignItems:"center",
         overflow:"none"
@@ -80,7 +80,7 @@ export const User = () => {
           <button className="btn btn-outline-success my-2 my-sm-0" onClick={handleSearch}>Search</button>
         </form>
       </nav>
-      <AgGridReact rowData={state} columnDefs={columns} defaultColDef={defaultColDefinition} />
+      <AgGridReact rowData={state} columnDefs={columns} defaultColDef={defaultColDefinition} pagination={true} paginationPageSize={5} />
     </div>
   )
 }
