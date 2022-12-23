@@ -30,7 +30,7 @@ export const User = () => {
       headerName: "LastName", field: "lastName"
     },
     {
-      headerName: "Email", field: "email"
+      headerName: "Email", field: "email" , floatingFilter: true
     },
     {
       headerName: "PhoneNumber", field: "phoneNumber"
@@ -54,7 +54,10 @@ export const User = () => {
     <div className='ag-theme-alpine'
       style={{
         height: "500px",
-        width: "995px"
+        width: "1395px", 
+        textAlign:"center",
+        alignItems:"center",
+        overflow:"none"
       }}
     >
       <h1>User Page</h1>
